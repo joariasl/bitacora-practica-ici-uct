@@ -1,20 +1,20 @@
 <md-content>
-  <h4>Fecha</h4>
+  <h3>Fecha</h3>
   <div layout-padding>
     <md-datepicker ng-model="bitacora.fecha" md-placeholder="Ingresar fecha"></md-datepicker>
   </div>
   <md-divider></md-divider>
-  <h4>Detalle de actividad</h4>
+  <h3>Detalle de actividad</h3>
   <form name="bitacoraForm" layout-padding>
     <md-input-container class="md-block">
       <label>Actividades planificadas</label>
-      <textarea ng-model="bitacora.actividades" columns="1" md-maxlength="1000"></textarea>
+      <textarea ng-model="bitacora.actividades" columns="1" md-maxlength="1000" rows="5"></textarea>
     </md-input-container>
     <md-input-container class="md-block">
       <label>Conclusiones (al término del día)</label>
-      <textarea ng-model="bitacora.conclusiones" columns="1" md-maxlength="1000"></textarea>
+      <textarea ng-model="bitacora.conclusiones" columns="1" md-maxlength="1000" rows="5"></textarea>
     </md-input-container>
-    <section layout="row" layout-sm="column">
+    <section layout="column" layout-align="center strech" layout-align-gt-xs="center end">
       <md-button class="md-raised md-primary">Guardar</md-button>
     </section>
   </form>

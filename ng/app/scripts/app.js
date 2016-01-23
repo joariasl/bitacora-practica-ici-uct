@@ -28,4 +28,8 @@ angular
         controller: 'BitacoraCtrl',
         controllerAs: 'bitacora'
       });
+  })
+  .config(function($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+      .primaryPalette('blue');
   });
