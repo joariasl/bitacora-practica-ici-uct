@@ -16,22 +16,16 @@ angular
     'ngMessages',
     'ngResource',
     'ngSanitize',
-    'ngTouch',
-    'ui.router'
+    'ui.router',
+    'ngMaterial'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/bitacora");
     $stateProvider
-      .state('index', {
-        url: '/',
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .state('about', {
-        url: '/about',
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .state('bitacora', {
+        url: '/bitacora',
+        templateUrl: 'views/bitacora.html',
+        controller: 'BitacoraCtrl',
+        controllerAs: 'bitacora'
       });
   });
