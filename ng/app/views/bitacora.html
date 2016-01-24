@@ -8,13 +8,13 @@
     </md-card-title>
     <md-card-content layout-align="space-between">
       <md-list>
-        <md-list-item class="md-3-line" ng-repeat="a in [1,2,3]">
+        <md-list-item class="md-3-line" ng-repeat="contenido in bitacora.bitacora">
           <div class="md-list-item-text">
-            <h3>Sábado 23/Enero/2016</h3>
+            <h3>{{ contenido.bita_fecha }}</h3>
             <h4>Actividades planificadas</h4>
-            <p>{{ "Contenido de las actividades" | limitTo: 20 }}{{ myString.length > 100 ? '...' : '' }}</p>
+            <p>{{ contenido.bita_actividades | limitTo: 20 }}{{ contenido.bita_actividades.length > 100 ? '...' : '' }}</p>
             <h4>Conclusiones</h4>
-            <p>{{ "Contenido de las conclusiones" | limitTo: 20 }}{{ myString.length > 100 ? '...' : '' }}</p>
+            <p>{{ contenido.bita_conclusiones | limitTo: 20 }}{{ contenido.bita_conclusiones.length > 100 ? '...' : '' }}</p>
           </div>
           <md-button class="md-secondary">Ver</md-button>
           <md-divider ng-if="!$last"></md-divider>
