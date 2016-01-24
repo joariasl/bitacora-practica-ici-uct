@@ -27,6 +27,12 @@ angular
         templateUrl: 'views/bitacora.html',
         controller: 'BitacoraCtrl',
         controllerAs: 'bitacora'
+      })
+      .state('contenido', {
+        url: '/contenido',
+        templateUrl: 'views/contenido.html',
+        controller: 'ContenidoCtrl',
+        controllerAs: 'contenido'
       });
   })
   .config(function($mdThemingProvider) {

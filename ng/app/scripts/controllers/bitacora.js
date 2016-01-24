@@ -11,6 +11,4 @@ angular.module('bitacoraApp')
   .controller('BitacoraCtrl', BitacoraCtrl);
 
 function BitacoraCtrl() {
-  this.fecha = new Date();
-  this.maxDate = new Date();
 };

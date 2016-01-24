@@ -1,0 +1,29 @@
+<md-content layout-padding flex>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Detalle de actividad</span>
+      </md-card-title-text>
+      <md-datepicker ng-model="bitacora.fecha" md-placeholder="Ingresar fecha"></md-datepicker>
+    </md-card-title>
+    <md-card-content layout-align="space-between">
+      <form name="bitacoraForm" layout-padding>
+        <md-input-container class="md-block">
+          <label>Actividades planificadas</label>
+          <textarea ng-model="bitacora.actividades" columns="1" md-maxlength="1000" rows="5"></textarea>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Conclusiones (al término del día)</label>
+          <textarea ng-model="bitacora.conclusiones" columns="1" md-maxlength="1000" rows="5"></textarea>
+        </md-input-container>
+        <section layout="column" layout-align="center strech" layout-align-gt-xs="center end">
+          <md-button class="md-raised md-primary">Guardar</md-button>
+        </section>
+      </form>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button>Anterior</md-button>
+      <md-button>Siguiente</md-button>
+    </md-card-actions>
+  </md-card>
+</md-content>
