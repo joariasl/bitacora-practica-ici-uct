@@ -35,4 +35,16 @@ class Bitacora extends REST_Controller {
         $this->response($this->db->get('bitacora')->result());
     }
 
+    public function contenido_get()
+    {
+        $fecha = $this->get('fecha');
+
+        $this->db->select('*');
+        $this->db->from('bitacora');
+        $this->db->where('bita_fecha', $fecha);
+        $this->db->limit(1);
+
+        $this->response($this->db->get()->result()[0]);// With [0] becouse the element is_array, return a object response.
+    }
+
 }

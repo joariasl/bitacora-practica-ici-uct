@@ -29,7 +29,7 @@ angular
         controllerAs: 'bitacora'
       })
       .state('contenido', {
-        url: '/contenido',
+        url: '/contenido/:fecha',
         templateUrl: 'views/contenido.html',
         controller: 'ContenidoCtrl',
         controllerAs: 'contenido'
