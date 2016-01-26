@@ -10,8 +10,8 @@
 angular.module('bitacoraApp')
   .controller('ContenidoCtrl', ContenidoCtrl);
 
-ContenidoCtrl.$inject = ['$state', '$stateParams', 'APIResource'];
-function ContenidoCtrl($state, $stateParams, APIResource) {
+ContenidoCtrl.$inject = ['$state', '$stateParams', '$filter', 'APIResource'];
+function ContenidoCtrl($state, $stateParams, $filter, APIResource) {
   var vm = this;
   vm.cargarContenido = cargarContenido;
   vm.loadContent = loadContent;
@@ -33,22 +33,19 @@ function ContenidoCtrl($state, $stateParams, APIResource) {
 
   function cargarContenido(){
     vm.contenido = {};
-    APIResource.bitacora.contenido.get({ fecha: vm.fecha.toLocaleFormat('%Y-%m-%d') }, function(data){
+    APIResource.bitacora.contenido.get({ fecha: dateFormat(vm.fecha) }, function(data){
       vm.contenido = data;
       vm.fecha = new Date(data.bita_fecha+'T00:00:00');
     });
   }
 
   function loadContent(){
-    $state.go('contenido', { fecha: vm.fecha.toLocaleFormat('%Y-%m-%d') },{
+    $state.go('contenido', { fecha: dateFormat(vm.fecha) },{
       // prevent the events onStart and onSuccess from firing
       notify:false,
       // prevent reload of the current state
       reload:false,
-      // replace the last record when changing the params so you don't hit the back button and get old params
-      location:'replace',
-      // inherit the current params on the url
-      inherit:true
+      // replace the last record wY
     });
     vm.cargarContenido();
   }
@@ -68,5 +65,9 @@ function ContenidoCtrl($state, $stateParams, APIResource) {
       vm.fecha.getMonth(),
       vm.fecha.getDate() + 1);
     vm.loadContent();
+  }
+
+  function dateFormat(date){
+    return $filter('date')(date, 'yyyy-MM-dd');
   }
 };
