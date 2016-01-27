@@ -10,9 +10,9 @@
 angular.module('bitacoraApp')
   .controller('BitacoraCtrl', BitacoraCtrl);
 
-BitacoraCtrl.$inject = ['APIResource'];
-function BitacoraCtrl(APIResource) {
+BitacoraCtrl.$inject = ['Bitacora'];
+function BitacoraCtrl(Bitacora) {
   var vm = this;
 
-  vm.bitacora = APIResource.bitacora.query();
+  vm.bitacora = Bitacora.query();
 };

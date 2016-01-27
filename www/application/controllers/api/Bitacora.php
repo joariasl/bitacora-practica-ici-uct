@@ -47,4 +47,17 @@ class Bitacora extends REST_Controller {
         $this->response($this->db->get()->result()[0]);// With [0] becouse the element is_array, return a object response.
     }
 
+    public function contenido_post()
+    {
+        $data = array(
+          'usua_id'           => 1,// Usuario temporalmente estático
+          'bita_fecha'        => $this->post('bita_fecha'),
+          'bita_actividades'  => $this->post('bita_actividades'),
+          'bita_conclusiones' => $this->post('bita_conclusiones')
+        );
+
+        $this->db->insert('bitacora', $data);
+        $this->set_response(NULL, REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
+    }
+
 }

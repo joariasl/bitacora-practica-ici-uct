@@ -10,10 +10,11 @@
 angular.module('bitacoraApp')
   .controller('ContenidoCtrl', ContenidoCtrl);
 
-ContenidoCtrl.$inject = ['$state', '$stateParams', '$filter', 'APIResource'];
-function ContenidoCtrl($state, $stateParams, $filter, APIResource) {
+ContenidoCtrl.$inject = ['$state', '$stateParams', '$filter', 'Contenido'];
+function ContenidoCtrl($state, $stateParams, $filter, Contenido) {
   var vm = this;
   vm.cargarContenido = cargarContenido;
+  vm.guardarContenido = guardarContenido;
   vm.loadContent = loadContent;
   vm.dateBack = dateBack;
   vm.dateNext = dateNext;
@@ -33,10 +34,16 @@ function ContenidoCtrl($state, $stateParams, $filter, APIResource) {
 
   function cargarContenido(){
     vm.contenido = {};
-    APIResource.bitacora.contenido.get({ fecha: dateFormat(vm.fecha) }, function(data){
-      vm.contenido = data;
+    Contenido.get({ fecha: dateFormat(vm.fecha) }, function(data){
+      vm.contenido = data;// Retorna datos junto a operaciones ngResource
       vm.fecha = new Date(data.bita_fecha+'T00:00:00');
     });
+  }
+
+  function guardarContenido(){
+    vm.contenido.bita_fecha = dateFormat(vm.fecha);// Pasar fecha seleccionada a modelo
+    vm.contenido = new Contenido(vm.contenido);// Crear nueva instancia usando datos ya contenidos, pasados parametros para obtener objeto nuevo instanciado con operaciones ngResource
+    vm.contenido.$save();
   }
 
   function loadContent(){
@@ -59,7 +66,6 @@ function ContenidoCtrl($state, $stateParams, $filter, APIResource) {
   }
 
   function dateNext(){
-    console.log(vm.fecha);
     vm.fecha = new Date(
       vm.fecha.getFullYear(),
       vm.fecha.getMonth(),
