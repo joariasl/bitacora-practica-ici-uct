@@ -25,6 +25,8 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  grunt.loadNpmTasks('grunt-connect-proxy');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -75,6 +77,17 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35729
       },
+      // Used for grunt-connect-proxy in configureProxies for create a proxy path yo another server
+      proxies: [
+        {
+          context: '/api',
+          host: 'localhost',
+          port: 80/*,
+          rewrite: {
+            '^/api': '/api'// (Optional) Rewrite ^/api to the /api path (replace that for your real path) on your remote server path, in case that your server path is located in another path
+          }*/
+        }
+      ],
       livereload: {
         options: {
           open: true,
@@ -89,7 +102,8 @@ module.exports = function (grunt) {
                 '/app/styles',
                 connect.static('./app/styles')
               ),
-              connect.static(appConfig.app)
+              connect.static(appConfig.app),
+              require('grunt-connect-proxy/lib/utils').proxyRequest// In the end of array
             ];
           }
         }
@@ -224,7 +238,7 @@ module.exports = function (grunt) {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
-    }, 
+    },
 
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
@@ -470,6 +484,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'postcss:server',
+      'configureProxies',
       'connect:livereload',
       'watch'
     ]);

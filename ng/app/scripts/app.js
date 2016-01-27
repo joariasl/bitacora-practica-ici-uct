@@ -39,4 +39,4 @@ angular
     $mdThemingProvider.theme('default')
       .primaryPalette('blue');
   })
-  .constant('API_BASEURL', '');
+  .constant('API_BASEURL', '/api');
