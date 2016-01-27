@@ -30,6 +30,8 @@ bower install
     }
   ]
   ```
+* Create database and launch creator SQL script: `resources_dev/database.sql`
+* Configure database connection in file: `www/application/config/database.php`
 
 ### Run
 ```sh
