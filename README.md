@@ -6,16 +6,24 @@ Sistema para hacer más amena la tarea de registrar una bitácora de práctica e
 
 ### Install
 * Install NodeJS
+* Install Ruby. (In Windows: http://rubyinstaller.org/ (Check add PATH))
+* Install compass (SASS) (Use sudo in Unix/Linux):
+
+  ```sh
+  gem install compass
+  ```
 * Copy the project in a PHP compatible server
 * Open a command line terminal and locate in `cd [project-folder]/ng`
 * Run npm install
-```sh
-npm install
-```
+
+  ```sh
+  npm install
+  ```
 * Download Bower resources
-```sh
-bower install
-```
+
+  ```sh
+  bower install
+  ```
 * For avoid the "HTTP access control (CORS)" problem, set in the `ng/Gruntfile.js` the property grunt config value of `connect.proxies[].rewrite`, uncomment those lines and replace `^/api': '/api` for your real host, port and path server of your running PHP compatible server. Eg:
 
   ```javascript
