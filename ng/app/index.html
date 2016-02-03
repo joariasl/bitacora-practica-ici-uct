@@ -5,6 +5,10 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <!-- Google Sign-In -->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -58,7 +62,7 @@
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
+     <!--<script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
@@ -66,7 +70,7 @@
 
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
-    </script>
+    </script>-->
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -88,6 +92,8 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/bitacora.js"></script>
         <script src="scripts/controllers/contenido.js"></script>
+        <script src="scripts/controllers/home.js"></script>
+        <script src="scripts/services/googlesignin.js"></script>
         <script src="scripts/services/bitacora.js"></script>
         <script src="scripts/services/contenido.js"></script>
         <!-- endbuild -->
