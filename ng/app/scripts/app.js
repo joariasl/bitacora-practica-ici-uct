@@ -26,8 +26,7 @@ angular
         url: '/home',
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl',
-        controllerAs: 'home',
-        resolve: { authenticate: authenticate }
+        controllerAs: 'home'
       })
       .state('bitacora', {
         url: '/bitacora',
@@ -60,7 +59,7 @@ function authenticate($q, $state, $timeout, GoogleSignIn) {
     .finally(function(){
       if (GoogleSignIn.isAuthenticated()) {
         // Resolve the promise successfully
-        console.log('Logueado', $state, $state.current.name);
+        console.log('Logueado');
         deferred.resolve();
       } else {
         console.log('NO Logueado');

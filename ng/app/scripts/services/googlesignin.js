@@ -36,7 +36,6 @@ function GoogleSignIn($q, $state, $interval) {
               }else{
                 vm.auth2 = gapi.auth2.getAuthInstance();
               }
-              console.log(vm.auth2);
               vm.status = 1;
               deferred.resolve();
             });

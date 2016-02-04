@@ -8,7 +8,7 @@
     </md-card-title>
     <md-card-content layout-align="space-between">
       <md-list>
-        <md-list-item class="md-3-line" ng-repeat="contenido in bitacora.bitacora">
+        <md-list-item class="md-3-line" ng-repeat="contenido in bitacora.bitacora | orderBy : contenido.bita_fecha : true">
           <div class="md-list-item-text">
             <h3>{{ contenido.bita_fecha }}</h3>
             <h4>Actividades planificadas</h4>

@@ -14,11 +14,14 @@ HomeCtrl.$inject = ['$state', 'GoogleSignIn'];
 function HomeCtrl($state, GoogleSignIn) {
   var vm = this;
 
-  if(GoogleSignIn.isAuthenticated()){
-    $state.go('bitacora');
-  }else{
-    vm.renderLoginButton();
-  }
+  var loadSignIn = GoogleSignIn.loadSignIn()
+    .finally(function(){
+      if(GoogleSignIn.isAuthenticated()){
+        $state.go('bitacora');
+      }else{
+        renderLoginButton();
+      }
+    });
 
   ////////////
 
