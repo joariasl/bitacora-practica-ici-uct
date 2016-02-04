@@ -40,6 +40,11 @@ Sistema para hacer más amena la tarea de registrar una bitácora de práctica e
   ```
 * Create database and launch creator SQL script: `resources_dev/database.sql`
 * Configure database connection in file: `www/application/config/database.php`
+* Configure Google Sign-in files:
+  * `www/application/config/gapi.php`
+  * `ng/app/index.html`
+
+  Change for you own Google client ID and Secret: https://developers.google.com/identity/sign-in/web/
 
 ### Run
 ```sh
