@@ -52,12 +52,13 @@ angular
 
 ////////////
 
-authenticate.$inject = ['$q', '$state', '$timeout', 'GoogleSignIn'];
-function authenticate($q, $state, $timeout, GoogleSignIn) {
+authenticate.$inject = ['$q', '$state', '$timeout', 'GoogleSignIn', '$rootScope'];
+function authenticate($q, $state, $timeout, GoogleSignIn, $rootScope) {
   var deferred = $q.defer();
   var loadSignIn = GoogleSignIn.loadSignIn()
     .finally(function(){
-      if (GoogleSignIn.isAuthenticated()) {
+      $rootScope.isAuthenticated = GoogleSignIn.isAuthenticated();// Identify session ein global model
+      if ($rootScope.isAuthenticated) {
         // Resolve the promise successfully
         console.log('Logueado');
         deferred.resolve();
