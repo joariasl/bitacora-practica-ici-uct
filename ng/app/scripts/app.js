@@ -17,7 +17,8 @@ angular
     'ngResource',
     'ngSanitize',
     'ui.router',
-    'ngMaterial'
+    'ngMaterial',
+    'angular-loading-bar'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/home");
@@ -43,6 +44,10 @@ angular
         resolve: { authenticate: authenticate }
       });
   })
+  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+    cfpLoadingBarProvider.parentSelector = '.header';
+  }])
   .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('blue');
