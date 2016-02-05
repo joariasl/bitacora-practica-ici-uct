@@ -44,6 +44,9 @@ angular
         resolve: { authenticate: authenticate }
       });
   })
+  .config(['$httpProvider', function($httpProvider) {
+    $httpProvider.interceptors.push('SessionInjector');
+  }])
   .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
     cfpLoadingBarProvider.parentSelector = '.header';

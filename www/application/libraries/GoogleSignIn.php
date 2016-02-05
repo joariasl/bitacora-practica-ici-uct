@@ -18,7 +18,7 @@ class GoogleSignIn extends Google_Client {
     }
     if ($ticket) {
       $data = $ticket->getAttributes();
-      return $data['payload']; // user ID
+      return $data['payload']; // user ID in ['sub']
     }
     return false;
   }

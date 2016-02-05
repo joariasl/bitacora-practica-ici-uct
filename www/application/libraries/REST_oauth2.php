@@ -7,6 +7,7 @@ require_once APPPATH . 'libraries/GoogleSignIn.php';
 
 class REST_oauth2 extends REST_Controller
 {
+  protected $client;
 
   function __construct(){
     parent::__construct();
@@ -25,12 +26,12 @@ class REST_oauth2 extends REST_Controller
     // Load the gapi.php configuration file
     $this->load->config('gapi.php');
 
-    $client = new GoogleSignIn();
-    $client->setClientId((string) $this->config->item('google_client_id'));
-    $client->setClientSecret((string) $this->config->item('google_client_secret'));
+    $this->client = new GoogleSignIn();
+    $this->client->setClientId((string) $this->config->item('google_client_id'));
+    $this->client->setClientSecret((string) $this->config->item('google_client_secret'));
 
     $token = isset($_SERVER['HTTP_X_SESSION_TOKEN'])?$_SERVER['HTTP_X_SESSION_TOKEN']:NULL;
-    $payload = $token?$client->getUserFromToken($token):NULL;
+    $payload = $token?$this->client->getUserFromToken($token):NULL;
 
     if(!$payload){
       // Response and exit
@@ -39,6 +40,10 @@ class REST_oauth2 extends REST_Controller
               $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unauthorized')
           ], self::HTTP_UNAUTHORIZED);
     }
+  }
+
+  public function getGoogleClient(){
+    return $this->client;
   }
 
 }

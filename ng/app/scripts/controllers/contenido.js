@@ -34,15 +34,15 @@ function ContenidoCtrl($state, $stateParams, $filter, Contenido) {
 
   function cargarContenido(){
     vm.contenido = {};
-    Contenido.get({ fecha: dateFormat(vm.fecha) }, function(data){
-      vm.contenido = data;// Retorna datos junto a operaciones ngResource
+    vm.contenido = Contenido.get({ fecha: dateFormat(vm.fecha) }, function(data){
+      //vm.contenido = data;// Retorna datos junto a operaciones ngResource
       vm.fecha = new Date(data.bita_fecha+'T00:00:00');
     });
   }
 
   function guardarContenido(){
     vm.contenido.bita_fecha = dateFormat(vm.fecha);// Pasar fecha seleccionada a modelo
-    vm.contenido = new Contenido(vm.contenido);// Crear nueva instancia usando datos ya contenidos, pasados parametros para obtener objeto nuevo instanciado con operaciones ngResource
+    //vm.contenido = new Contenido(vm.contenido);// Crear nueva instancia usando datos ya contenidos, pasados parametros para obtener objeto nuevo instanciado con operaciones ngResource
     vm.contenido.$save();
   }
 
