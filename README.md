@@ -13,6 +13,12 @@ Sistema para hacer más amena la tarea de registrar una bitácora de práctica e
   gem install compass
   ```
 * Copy the project in a PHP compatible server
+* Open a command line terminal and locate in `cd [project-folder]/www/application`
+* Download Composer (PHP) resources (https://getcomposer.org/)
+
+  ```sh
+  composer install
+  ```
 * Open a command line terminal and locate in `cd [project-folder]/ng`
 * Run npm install
 

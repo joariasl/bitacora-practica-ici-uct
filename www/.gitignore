@@ -5,3 +5,7 @@
 */cache/*
 !*/cache/index.html
 !*/cache/.htaccess
+
+### Composer ###
+application/composer.phar
+application/vendor/
