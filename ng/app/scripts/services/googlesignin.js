@@ -33,11 +33,16 @@ function GoogleSignIn($q, $state, $interval) {
             gapi.load('auth2',function(){
               if(gapi.auth2.getAuthInstance() == undefined){
                 vm.auth2 = gapi.auth2.init();// Equals gapi.auth2.getAuthInstance()
+                vm.auth2.then(function(){
+                  // Return OK only when init is completed
+                  vm.status = 1;
+                  deferred.resolve();
+                });
               }else{
                 vm.auth2 = gapi.auth2.getAuthInstance();
+                vm.status = 1;
+                deferred.resolve();
               }
-              vm.status = 1;
-              deferred.resolve();
             });
           } else {
             vm.auth2 = gapi.auth2.getAuthInstance();// Equals gapi.auth2.getAuthInstance()
