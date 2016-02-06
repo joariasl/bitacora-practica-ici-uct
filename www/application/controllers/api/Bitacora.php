@@ -35,7 +35,13 @@ class Bitacora extends REST_oauth2 {
 
     public function index_get()
     {
-        $this->response($this->db->get('bitacora')->result());
+        $this->db->select('bita_fecha, bita_actividades, bita_conclusiones');
+        $this->db->from('bitacora');
+        $this->db->where('gapi_uid', $this->gapi_user['sub']);
+
+        $query = $this->db->get();
+
+        $this->response($query->result());
     }
 
     public function contenido_get()
