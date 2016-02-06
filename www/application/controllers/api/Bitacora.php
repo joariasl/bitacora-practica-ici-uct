@@ -30,7 +30,7 @@ class Bitacora extends REST_oauth2 {
         $this->methods['user_post']['limit'] = 100; // 100 requests per hour per user/key
         $this->methods['user_delete']['limit'] = 50; // 50 requests per hour per user/key
 
-        $this->gapi_user = $this->client->getUserFromToken($_SERVER['HTTP_X_SESSION_TOKEN']);
+        $this->gapi_user = $this->client->getUserFromToken( $this->getToken() );
     }
 
     public function index_get()

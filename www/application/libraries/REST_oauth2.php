@@ -30,7 +30,7 @@ class REST_oauth2 extends REST_Controller
     $this->client->setClientId((string) $this->config->item('google_client_id'));
     $this->client->setClientSecret((string) $this->config->item('google_client_secret'));
 
-    $token = isset($_SERVER['HTTP_X_SESSION_TOKEN'])?$_SERVER['HTTP_X_SESSION_TOKEN']:NULL;
+    $token = $this->getToken();
     $payload = $token?$this->client->getUserFromToken($token):NULL;
 
     if(!$payload){
@@ -44,6 +44,10 @@ class REST_oauth2 extends REST_Controller
 
   public function getGoogleClient(){
     return $this->client;
+  }
+
+  public function getToken(){
+    return $this->input->server('HTTP_X_SESSION_TOKEN') ? $this->input->server('HTTP_X_SESSION_TOKEN') : $this->get('token');
   }
 
 }
