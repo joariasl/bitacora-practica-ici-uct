@@ -12,6 +12,7 @@ class REST_oauth2 extends REST_Controller
   function __construct(){
     parent::__construct();
 
+    $this->load->library('session');
     $this->_prepare_oauth_gapi();
   }
 
@@ -40,6 +41,7 @@ class REST_oauth2 extends REST_Controller
               $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unauthorized')
           ], self::HTTP_UNAUTHORIZED);
     }
+    $this->session->set_userdata('token', $token);
   }
 
   public function getGoogleClient(){
@@ -47,7 +49,7 @@ class REST_oauth2 extends REST_Controller
   }
 
   public function getToken(){
-    return $this->input->server('HTTP_X_SESSION_TOKEN') ? $this->input->server('HTTP_X_SESSION_TOKEN') : $this->get('token');
+    return $this->input->server('HTTP_X_SESSION_TOKEN') ? $this->input->server('HTTP_X_SESSION_TOKEN') : $this->session->userdata('token');
   }
 
 }
