@@ -55,7 +55,10 @@ angular
     $mdThemingProvider.theme('default')
       .primaryPalette('blue');
   })
-  .constant('API_BASEURL', '/api');
+  .constant('API_BASEURL', '/api')
+  .run(function($rootScope, API_BASEURL){
+    $rootScope.API_BASEURL = API_BASEURL;
+  });
 
 
 ////////////
