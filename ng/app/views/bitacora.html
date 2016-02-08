@@ -10,19 +10,17 @@
     <md-card-content layout-align="space-between">
       <md-list>
         <div ng-repeat="contenido in bitacora.bitacora | orderBy : contenido.bita_fecha : true">
-          <h4>{{ contenido.bita_fecha }}</h4>
-          <md-list-item class="md-3-line" >
-            <div class="md-list-item-text">
-              <div class="row">
-                <div class="col-sm-5 col-xs-10">
-                  <h4>Actividades planificadas</h4>
-                  <p>{{ contenido.bita_actividades | limitTo: 100 }}{{ contenido.bita_actividades.length > 100 ? '...' : '' }}</p>
-                </div>
-                <div class="col-sm-5 col-xs-10">
-                    <h4>Conclusiones</h4>
-                    <p>{{ contenido.bita_conclusiones | limitTo: 100 }}{{ contenido.bita_conclusiones.length > 100 ? '...' : '' }}</p>
-                </div>
+          <md-list-item class="md-3-line">
+            <div flex>
+              <div class="md-list-item-text">
+                <h3>{{ contenido.bita_fecha }}</h3>
+                <h4>Actividades planificadas</h4>
+                <p>{{ contenido.bita_actividades | limitTo: 100 }}{{ contenido.bita_actividades.length > 100 ? '...' : '' }}</p>
+                <h4>Conclusiones</h4>
+                <p>{{ contenido.bita_conclusiones | limitTo: 100 }}{{ contenido.bita_conclusiones.length > 100 ? '...' : '' }}</p>
               </div>
+            </div>
+            <div flex-xs="30" flex="20">
               <md-button class="md-secondary" ui-sref="contenido({fecha:contenido.bita_fecha})">Ver</md-button>
             </div>
           </md-list-item>
