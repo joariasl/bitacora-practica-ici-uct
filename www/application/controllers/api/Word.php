@@ -24,6 +24,7 @@ class Word extends REST_oauth2 {
         parent::__construct();
 
         $this->gapi_user = $this->client->getUserFromToken( $this->getToken() );
+        setlocale(LC_ALL,"es_ES");
     }
 
     public function index_get()
@@ -32,6 +33,7 @@ class Word extends REST_oauth2 {
         $this->db->select('bita_fecha, bita_actividades, bita_conclusiones');
         $this->db->from('bitacora');
         $this->db->where('gapi_uid', $this->gapi_user['sub']);
+        $this->db->order_by('bita_fecha', 'ASC');
 
         $query = $this->db->get();
 
@@ -79,7 +81,7 @@ class Word extends REST_oauth2 {
           $table = $section->addTable('tableBitacora');
 
           $table->addRow();
-          $table->addCell(9600, $cellStyleTableBitacoraFecha)->addText(htmlspecialchars('Fecha: '. date( 'd/m/Y', strtotime($row->bita_fecha) ) ), array('size' => 12, 'bold' => true));
+          $table->addCell(9600, $cellStyleTableBitacoraFecha)->addText(htmlspecialchars('Fecha: ' . strftime("%A",strtotime($row->bita_fecha)) . ' ' . date( 'd/m/Y', strtotime($row->bita_fecha) ) ), array('size' => 12, 'bold' => true));
           $table->addRow();
           $table->addCell(9600, $cellStyleTableBitacoraTitle)->addText(htmlspecialchars('Actividades planificadas'), array('size' => 11));
           $table->addRow();
