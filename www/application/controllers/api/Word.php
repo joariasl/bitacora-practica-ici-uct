@@ -48,7 +48,11 @@ class Word extends REST_oauth2 {
         // Header
         $header = $section->createHeader();
         //$header->addTextBreak();
-        $header->addImage('logo-uct.jpg', array('width'=>150, 'height'=>52, 'align'=>'right'));
+        $header->addImage('logo-uct.jpg', array(
+          'width'         => 150,
+          'height'        => 52,
+          'positioning'   => 'absolute',
+          'posHorizontal' => 'right'));
         $header->addText('Escuela de Ingeniería Informática', null, array('align'=>'left'));
 
         // Footer
