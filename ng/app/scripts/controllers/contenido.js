@@ -45,17 +45,6 @@ function ContenidoCtrl($state, $stateParams, $filter, $mdDialog, Contenido) {
     //vm.contenido = new Contenido(vm.contenido);// Crear nueva instancia usando datos ya contenidos, pasados parametros para obtener objeto nuevo instanciado con operaciones ngResource
     vm.contenido.$save().then(null, function(rejection){
       var status = rejection.status;
-      if (status == -1) {
-        $mdDialog.show(
-          $mdDialog.alert()
-            .parent(angular.element(document.body))
-            .clickOutsideToClose(true)
-            .title('Error')
-            .textContent('No se pudo concretar la operación.')
-            .ariaLabel('Error')
-            .ok('Aceptar')
-        );
-      }
       if (status == 500) {
         $mdDialog.show(
           $mdDialog.alert()
@@ -64,6 +53,16 @@ function ContenidoCtrl($state, $stateParams, $filter, $mdDialog, Contenido) {
             .title('Internal Server Error')
             .textContent('No se pudo concretar la operación en el servidor.')
             .ariaLabel('Internal Server Error')
+            .ok('Aceptar')
+        );
+      } else {
+        $mdDialog.show(
+          $mdDialog.alert()
+            .parent(angular.element(document.body))
+            .clickOutsideToClose(true)
+            .title('Error')
+            .textContent('No se pudo concretar la operación.')
+            .ariaLabel('Error')
             .ok('Aceptar')
         );
       }
