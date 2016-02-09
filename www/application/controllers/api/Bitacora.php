@@ -79,7 +79,6 @@ class Bitacora extends REST_oauth2 {
         $this->db->where('gapi_uid', $this->gapi_user['sub']);
         $this->db->where('bita_fecha', $this->post('bita_fecha'));
         $this->db->update('bitacora', $data);
-        $this->set_response(NULL, REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
 
         if($this->db->affected_rows() <= 0){
           // INSERT
@@ -92,9 +91,14 @@ class Bitacora extends REST_oauth2 {
 
           $this->db->set($data);
           $this->db->insert('bitacora');
+          if($this->db->affected_rows() > 0){
+            $this->set_response(NULL, REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
+          }else{
+            $this->response(NULL, REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
+          }
+        }else{
           $this->set_response(NULL, REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
         }
-        $this->set_response(NULL, REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
     }
 
     // UPDATE
