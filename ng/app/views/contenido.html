@@ -11,15 +11,15 @@
       <form name="bitacoraForm" layout-padding>
         <md-input-container class="md-block">
           <label>Actividades planificadas</label>
-          <textarea ng-model="contenido.contenido.bita_actividades" columns="1" md-maxlength="1000" rows="5"></textarea>
+          <textarea ng-model="contenido.contenido.bita_actividades" columns="1" md-maxlength="1000" rows="5" ng-disabled="!contenido.contenido.$resolved"></textarea>
         </md-input-container>
         <md-input-container class="md-block">
           <label>Conclusiones (al término del día)</label>
-          <textarea ng-model="contenido.contenido.bita_conclusiones" columns="1" md-maxlength="1000" rows="5"></textarea>
+          <textarea ng-model="contenido.contenido.bita_conclusiones" columns="1" md-maxlength="1000" rows="5" ng-disabled="!contenido.contenido.$resolved"></textarea>
         </md-input-container>
         <section layout="column" layout-gt-xs="row" layout-align="center strech" layout-align-gt-xs="end center">
-          <md-button class="md-raised md-primary" ng-click="contenido.guardarContenido()" flex-order-gt-xs="2">Guardar</md-button>
-          <md-button class="md-raised md-warn" ng-click="contenido.eliminarContenido()" flex-order-gt-xs="1">Eliminar</md-button>
+          <md-button class="md-raised md-primary" ng-click="contenido.guardarContenido()" ng-disabled="!contenido.contenido.$resolved" flex-order-gt-xs="2">Guardar</md-button>
+          <md-button class="md-raised md-warn" ng-click="contenido.eliminarContenido()" ng-disabled="!contenido.contenido.$resolved || contenido.contenido.$promise.$$state.value.status == 404" flex-order-gt-xs="1">Eliminar</md-button>
         </section>
       </form>
     </md-card-content>
