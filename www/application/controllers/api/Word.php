@@ -52,7 +52,8 @@ class Word extends REST_oauth2 {
           'width'         => 150,
           'height'        => 52,
           'positioning'   => 'absolute',
-          'posHorizontal' => 'right'));
+          'posHorizontal' => 'right',
+          'posHorizontalRel' => 'margin'));
         $header->addText('Escuela de Ingeniería Informática', null, array('align'=>'left'));
 
         // Footer
