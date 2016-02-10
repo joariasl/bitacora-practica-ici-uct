@@ -12,7 +12,7 @@ angular.module('bitacoraApp')
 
 Contenido.$inject = ['$resource', 'API_BASEURL'];
 function Contenido($resource, API_BASEURL) {
-  var service = $resource(API_BASEURL+'/bitacora/contenido/:fecha');
+  var service = $resource(API_BASEURL+'/bitacora/contenido/:fecha', {fecha:'@bita_fecha'});
 
   return service;
 }

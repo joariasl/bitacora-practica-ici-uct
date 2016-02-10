@@ -115,4 +115,20 @@ class Bitacora extends REST_oauth2 {
         $this->set_response(NULL, REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
     }
 
+    // DELETE
+    public function contenido_delete()
+    {
+        $fecha = $this->get('fecha');
+
+        $this->db->where('gapi_uid', $this->gapi_user['sub']);
+        $this->db->where('bita_fecha', $fecha);
+        $this->db->delete('bitacora');
+
+        if($this->db->affected_rows() > 0){
+          $this->set_response(NULL, REST_Controller::HTTP_NO_CONTENT); // NO_CONTENT (204) being the HTTP response code
+        }else{
+          $this->response(NULL, REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
+        }
+    }
+
 }

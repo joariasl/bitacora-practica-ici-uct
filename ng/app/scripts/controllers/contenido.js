@@ -15,6 +15,7 @@ function ContenidoCtrl($state, $stateParams, $filter, $document, $mdDialog, $mdT
   var vm = this;
   vm.cargarContenido = cargarContenido;
   vm.guardarContenido = guardarContenido;
+  vm.eliminarContenido = eliminarContenido;
   vm.loadContent = loadContent;
   vm.dateBack = dateBack;
   vm.dateNext = dateNext;
@@ -73,6 +74,11 @@ function ContenidoCtrl($state, $stateParams, $filter, $document, $mdDialog, $mdT
         );
       }
     });
+  }
+
+  function eliminarContenido(){
+    vm.contenido.bita_fecha = dateFormat(vm.fecha);// Pasar fecha seleccionada a modelo
+    vm.contenido.$delete();
   }
 
   function loadContent(){

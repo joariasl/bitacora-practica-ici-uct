@@ -17,8 +17,9 @@
           <label>Conclusiones (al término del día)</label>
           <textarea ng-model="contenido.contenido.bita_conclusiones" columns="1" md-maxlength="1000" rows="5"></textarea>
         </md-input-container>
-        <section layout="column" layout-align="center strech" layout-align-gt-xs="center end">
-          <md-button class="md-raised md-primary" ng-click="contenido.guardarContenido()">Guardar</md-button>
+        <section layout="column" layout-gt-xs="row" layout-align="center strech" layout-align-gt-xs="end center">
+          <md-button class="md-raised md-primary" ng-click="contenido.guardarContenido()" flex-order-gt-xs="2">Guardar</md-button>
+          <md-button class="md-raised md-warn" ng-click="contenido.eliminarContenido()" flex-order-gt-xs="1">Eliminar</md-button>
         </section>
       </form>
     </md-card-content>
