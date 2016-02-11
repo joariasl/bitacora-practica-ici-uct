@@ -23,7 +23,7 @@ function ContenidoCtrl($state, $stateParams, $filter, $document, $mdDialog, $mdT
   vm.contenido = {};
 
   if($stateParams.fecha){
-    vm.fecha = new Date($stateParams.fecha+'T00:00:00');// Guardar fecha de $stateParam en modelo y datepicker
+    vm.fecha = dateParseLocal($stateParams.fecha+'T00:00:00');// Guardar fecha de $stateParam en modelo y datepicker
     vm.cargarContenido();
   }else{
     // Si no hay fecha de ingreso, cargar fecha de hoy
@@ -37,7 +37,7 @@ function ContenidoCtrl($state, $stateParams, $filter, $document, $mdDialog, $mdT
     vm.contenido = {};
     vm.contenido = Contenido.get({ fecha: dateFormat(vm.fecha) }, function(data){
       //vm.contenido = data;// Retorna datos junto a operaciones ngResource
-      vm.fecha = new Date(data.bita_fecha+'T00:00:00');
+      vm.fecha = dateParseLocal(data.bita_fecha+'T00:00:00');
     });
   }
 
@@ -110,5 +110,11 @@ function ContenidoCtrl($state, $stateParams, $filter, $document, $mdDialog, $mdT
 
   function dateFormat(date){
     return $filter('date')(date, 'yyyy-MM-dd');
+  }
+
+  function dateParseLocal(str_date){
+    var date = new Date(Date.parse(str_date));
+    date.setTime(date.getTime()+date.getTimezoneOffset()*60000);
+    return date;
   }
 };
