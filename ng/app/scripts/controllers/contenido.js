@@ -10,8 +10,8 @@
 angular.module('bitacoraApp')
   .controller('ContenidoCtrl', ContenidoCtrl);
 
-ContenidoCtrl.$inject = ['$state', '$stateParams', '$filter', '$document', '$mdDialog', '$mdToast', 'Contenido'];
-function ContenidoCtrl($state, $stateParams, $filter, $document, $mdDialog, $mdToast, Contenido) {
+ContenidoCtrl.$inject = ['$state', '$stateParams', '$filter', '$mdDialog', 'Toast', 'Contenido'];
+function ContenidoCtrl($state, $stateParams, $filter, $mdDialog, Toast, Contenido) {
   var vm = this;
   vm.cargarContenido = cargarContenido;
   vm.guardarContenido = guardarContenido;
@@ -45,11 +45,7 @@ function ContenidoCtrl($state, $stateParams, $filter, $document, $mdDialog, $mdT
     vm.contenido.bita_fecha = dateFormat(vm.fecha);// Pasar fecha seleccionada a modelo
     //vm.contenido = new Contenido(vm.contenido);// Crear nueva instancia usando datos ya contenidos, pasados parametros para obtener objeto nuevo instanciado con operaciones ngResource
     vm.contenido.$save().then(function(result){
-      var toast = $mdToast.simple()
-        .textContent('Guardado!')
-        .action('OK')
-        .parent($document[0].querySelector('#toastBounds'));
-      $mdToast.show(toast);
+      Toast.show('¡Guardado!');
     }, function(rejection){
       var status = rejection.status;
       if (status == 500) {
@@ -78,7 +74,10 @@ function ContenidoCtrl($state, $stateParams, $filter, $document, $mdDialog, $mdT
 
   function eliminarContenido(){
     vm.contenido.bita_fecha = dateFormat(vm.fecha);// Pasar fecha seleccionada a modelo
-    vm.contenido.$delete();
+    vm.contenido.$delete(function(){
+      Toast.show('¡Eliminado!');
+      cargarContenido();
+    });
   }
 
   function loadContent(){
