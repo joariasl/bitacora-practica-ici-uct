@@ -59,6 +59,7 @@ $route['translate_uri_dashes'] = FALSE;
 | -------------------------------------------------------------------------
 */
 $route['api/bitacora/contenido/(\d{4}-\d{2}-\d{2})'] = 'api/bitacora/contenido/fecha/$1';
+$route['api/bitacora/contenido/(\d{4}-\d{2}-\d{2})/(.*)'] = 'api/bitacora/contenido/fecha/$1/action/$2';
 
 /*
 | -------------------------------------------------------------------------

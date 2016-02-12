@@ -12,7 +12,10 @@ angular.module('bitacoraApp')
 
 Contenido.$inject = ['$resource', 'API_BASEURL'];
 function Contenido($resource, API_BASEURL) {
-  var service = $resource(API_BASEURL+'/bitacora/contenido/:fecha', {fecha:'@bita_fecha'});
+  var service = $resource(API_BASEURL+'/bitacora/contenido/:fecha/:action', {fecha:'@bita_fecha'},
+    {
+        'delete': { method:'GET', params: {'action':'delete'} }
+    });
 
   return service;
 }

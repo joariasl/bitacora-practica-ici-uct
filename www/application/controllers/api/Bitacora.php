@@ -46,6 +46,13 @@ class Bitacora extends REST_oauth2 {
 
     public function contenido_get()
     {
+        // Redirection of HTTP method for DELETE with action get option
+        $action = $this->get('action');
+        if($action == 'delete'){
+          $this->contenido_delete();
+          return; //Stop function
+        }
+
         $fecha = $this->get('fecha');
 
         $this->db->select('bita_fecha, bita_actividades, bita_conclusiones');
@@ -125,7 +132,7 @@ class Bitacora extends REST_oauth2 {
         $this->db->delete('bitacora');
 
         if($this->db->affected_rows() > 0){
-          $this->set_response(NULL, REST_Controller::HTTP_NO_CONTENT); // NO_CONTENT (204) being the HTTP response code
+          $this->response(NULL, REST_Controller::HTTP_NO_CONTENT); // NO_CONTENT (204) being the HTTP response code
         }else{
           $this->response(NULL, REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
         }
