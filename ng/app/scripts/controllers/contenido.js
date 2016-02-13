@@ -15,7 +15,7 @@ function ContenidoCtrl($state, $stateParams, $filter, $mdDialog, Toast, Contenid
   var vm = this;
   vm.cargarContenido = cargarContenido;
   vm.guardarContenido = guardarContenido;
-  vm.eliminarContenido = eliminarContenido;
+  vm.eliminarConfirm = eliminarConfirm;
   vm.loadContent = loadContent;
   vm.dateBack = dateBack;
   vm.dateNext = dateNext;
@@ -70,6 +70,18 @@ function ContenidoCtrl($state, $stateParams, $filter, $mdDialog, Toast, Contenid
         );
       }
     });
+  }
+
+  function eliminarConfirm(){
+    var confirm = $mdDialog.confirm()
+          .title('¿Eliminar contenido del día '+vm.fecha.toLocaleDateString()+'?')
+          .textContent('Esta acción no se podrá deshacer.')
+          .ariaLabel('Confirmar Eliminar')
+          .ok('Aceptar')
+          .cancel('Cancelar');
+    $mdDialog.show(confirm).then(function() {
+        eliminarContenido();
+      });
   }
 
   function eliminarContenido(){

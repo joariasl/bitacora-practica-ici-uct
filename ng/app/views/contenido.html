@@ -19,7 +19,7 @@
         </md-input-container>
         <section layout="column" layout-gt-xs="row" layout-align="center strech" layout-align-gt-xs="end center">
           <md-button class="md-raised md-primary" ng-click="contenido.guardarContenido()" ng-disabled="!contenido.contenido.$resolved" flex-order-gt-xs="2">Guardar</md-button>
-          <md-button class="md-raised md-warn" ng-click="contenido.eliminarContenido()" ng-disabled="!contenido.contenido.$resolved || contenido.contenido.$promise.$$state.value.status == 404" flex-order-gt-xs="1">Eliminar</md-button>
+          <md-button class="md-raised md-warn" ng-click="contenido.eliminarConfirm()" ng-disabled="!contenido.contenido.$resolved || contenido.contenido.$promise.$$state.value.status == 404" flex-order-gt-xs="1">Eliminar</md-button>
         </section>
       </form>
     </md-card-content>
