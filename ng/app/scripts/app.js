@@ -72,6 +72,8 @@ function authenticate($q, $state, $timeout, GoogleSignIn, $rootScope) {
       if ($rootScope.isAuthenticated) {
         // Resolve the promise successfully
         console.log('Logueado');
+        $rootScope.name = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName();
+        $rootScope.email = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getEmail();
         deferred.resolve();
       } else {
         console.log('NO Logueado');
