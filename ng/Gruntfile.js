@@ -304,7 +304,7 @@ module.exports = function (grunt) {
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      js: ['<%= yeoman.dist %>/scripts/{,*/}*.js'],
+      js: ['<%= yeoman.dist %>/scripts/{,*/}*.js', '<%= yeoman.dist %>/manifest.json'],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
