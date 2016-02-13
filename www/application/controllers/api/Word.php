@@ -96,11 +96,11 @@ class Word extends REST_oauth2 {
           $table->addRow();
           $table->addCell(9600, $cellStyleTableBitacoraTitle)->addText(htmlspecialchars('Actividades planificadas'), array('size' => 11));
           $table->addRow();
-          $table->addCell(9600, null)->addText(htmlspecialchars($row->bita_actividades));
+          $this->textBreakLine($table->addCell(9600, null), htmlspecialchars($row->bita_actividades));
           $table->addRow();
           $table->addCell(9600, $cellStyleTableBitacoraTitle)->addText(htmlspecialchars('Conclusiones (al término del día)'), array('size' => 11));
           $table->addRow();
-          $table->addCell(9600, null)->addText(htmlspecialchars($row->bita_conclusiones));
+          $this->textBreakLine($table->addCell(9600, null), htmlspecialchars($row->bita_conclusiones));
 
           $section->addTextBreak();
         }
@@ -125,6 +125,13 @@ class Word extends REST_oauth2 {
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
         $objWriter->save('php://output');
 
+    }
+
+    public function textBreakLine($section, $text){
+        $textlines = explode("\n", $text);
+        foreach($textlines as $line) {
+            $section->addText($line);
+        }
     }
 
 }
