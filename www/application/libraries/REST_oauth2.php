@@ -40,6 +40,21 @@ class REST_oauth2 extends REST_Controller
               $this->config->item('rest_status_field_name') => FALSE,
               $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unauthorized')
           ], self::HTTP_UNAUTHORIZED);
+    }else{
+        $this->db->where('gapi_uid', $payload['sub']);
+        $this->db->from('usuario');
+        if($this->db->count_all_results() == 0){
+            // INSERT
+            $data = array(
+              'gapi_uid'       => $payload['sub'],
+              'usua_nombres'   => $payload['given_name'],
+              'usua_apellidos' => $payload['family_name'],
+              'usua_email'     => $payload['email']
+            );
+
+            $this->db->set($data);
+            $this->db->insert('usuario');
+        }
     }
     $this->session->set_userdata('token', $token);
   }
