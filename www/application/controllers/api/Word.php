@@ -40,6 +40,12 @@ class Word extends REST_oauth2 {
 
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
 
+        // Initial config
+        $phpWord->setDefaultParagraphStyle(array(
+            'spaceBefore' => 0,
+            'spaceAfter' => 0
+        ));
+
         // New section
         $section = $phpWord->createSection(array(
             'pageSizeW'=> 12240,
