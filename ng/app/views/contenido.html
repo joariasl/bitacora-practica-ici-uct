@@ -11,11 +11,11 @@
       <form name="bitacoraForm" layout-padding>
         <md-input-container class="md-block">
           <label>Actividades planificadas</label>
-          <textarea ng-model="contenido.contenido.bita_actividades" columns="1" md-maxlength="1000" rows="5" ng-disabled="!contenido.contenido.$resolved"></textarea>
+          <textarea ng-model="contenido.contenido.bita_actividades" columns="1" maxlength="1000" md-maxlength="1000" rows="5" ng-disabled="!contenido.contenido.$resolved"></textarea>
         </md-input-container>
         <md-input-container class="md-block">
           <label>Conclusiones (al término del día)</label>
-          <textarea ng-model="contenido.contenido.bita_conclusiones" columns="1" md-maxlength="1000" rows="5" ng-disabled="!contenido.contenido.$resolved"></textarea>
+          <textarea ng-model="contenido.contenido.bita_conclusiones" columns="1" maxlength="1000" md-maxlength="1000" rows="5" ng-disabled="!contenido.contenido.$resolved"></textarea>
         </md-input-container>
         <section layout="column" layout-gt-xs="row" layout-align="center strech" layout-align-gt-xs="end center">
           <md-button class="md-raised md-primary" ng-click="contenido.guardarContenido()" ng-disabled="!contenido.contenido.$resolved" flex-order-gt-xs="2">Guardar</md-button>
