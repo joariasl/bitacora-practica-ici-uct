@@ -3,15 +3,16 @@ branches:
     - master
 language: node_js
 node_js:
-  - "4.2.4"
+  - '0.10'
+env:
+  - NG_DIR=ng
 before_script:
-  - pushd ng/dist
+  - cd $NG_DIR
   - npm install grunt-cli -g
   - npm install bower -g
   - npm install
   - bower install
-  - popd
 script:
-  - pushd ng/dist
+  - cd $NG_DIR
   - grunt build
   - popd
