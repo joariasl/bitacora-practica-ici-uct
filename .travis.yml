@@ -1,0 +1,17 @@
+branches:
+  only:
+    - master
+language: node_js
+node_js:
+  - "0.10"
+before_script:
+  - pushd ng/dist
+  - npm install grunt-cli -g
+  - npm install bower -g
+  - npm install
+  - bower install
+  - popd
+script:
+  - pushd ng/dist
+  - grunt build
+  - popd
