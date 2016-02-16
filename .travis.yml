@@ -8,6 +8,7 @@ env:
   - NG_DIR=ng
 before_script:
   - cd $NG_DIR
+  - gem install compass
   - npm install grunt-cli -g
   - npm install bower -g
   - npm install
@@ -15,4 +16,3 @@ before_script:
 script:
   - cd $NG_DIR
   - grunt build
-  - popd
