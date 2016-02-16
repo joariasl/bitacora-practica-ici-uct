@@ -5,7 +5,7 @@ language: node_js
 node_js:
   - '0.10'
 env:
-  - NG_DIR=ng
+  - NG_DIR=$TRAVIS_BUILD_DIR/ng
 before_script:
   - cd $NG_DIR
   - gem install compass
