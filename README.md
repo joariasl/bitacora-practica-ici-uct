@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/joariasl/bitacora-practica-ici-uct.svg?branch=master)](https://travis-ci.org/joariasl/bitacora-practica-ici-uct)
+
 # Bitacora de práctica ICI UCT
 
 Sistema para hacer más amena la tarea de registrar una bitácora de práctica en una de nuestras últimas etapas de nuestra carrera universitaria.
