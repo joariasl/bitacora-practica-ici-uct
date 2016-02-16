@@ -3,7 +3,7 @@ branches:
     - master
 language: node_js
 node_js:
-  - '0.10'
+  - "4"
 env:
   - NG_DIR=$TRAVIS_BUILD_DIR/ng
 before_script:
